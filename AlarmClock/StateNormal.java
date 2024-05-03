@@ -8,8 +8,7 @@ public class StateNormal implements State{
 
     @Override
     public void display() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'display'");
+        System.out.println("time counted");
     };
 
 
