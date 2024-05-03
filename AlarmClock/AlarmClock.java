@@ -1,6 +1,5 @@
 package AlarmClock;
-
-import java.sql.Array;
+import java.util.concurrent.TimeUnit;
 
 public class AlarmClock implements Observer{
     // TODO Add methods
@@ -24,6 +23,17 @@ public class AlarmClock implements Observer{
     public void onShortPress(){
         System.out.println("alarm recieved: short press");
         // currentState.onShortPress();
+    }
+
+    public void display(){
+        while(true){
+            currentState.display();
+            try {
+                TimeUnit.SECONDS.sleep(1); // Sleep for 1 second
+            } catch (InterruptedException e) {
+                System.out.println("interrupted: " + e);
+            }
+        }
     }
 
     @Override
