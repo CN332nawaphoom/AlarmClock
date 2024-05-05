@@ -11,18 +11,37 @@ public class AlarmClock implements Observer{
         this.currentState = states[0]; // start alarmclock with normal mode
     }
 
-    public void setState(State state){
-        currentState = state;
+    public void setState(int stateIndex){
+        try{
+            currentState = states[stateIndex];
+        }catch(IndexOutOfBoundsException e){
+            System.out.println("index out of bounds: " + e);
+        }
+        
+    }
+
+    public void setState(int stateIndex, String action, String args){
+        if(stateIndex == 0 && action.equalsIgnoreCase("timeset")){
+            State state = states[0];
+            StateNormal stateNormal = (StateNormal) state;   
+            stateNormal.setTime(args);
+            setState(0);
+        }else if (stateIndex == 2 && action.equalsIgnoreCase("timeset")){
+            State state = states[2];
+            StateCountdown stateCountdown = (StateCountdown) state;
+            stateCountdown.setTime(args);
+            setState(2);
+        }
     }
 
     public void onLongPress(){
-        System.out.println("alarm recieved: long press");
-        // currentState.onLongPress();
+        // System.out.println("alarm recieved: long press");
+        currentState.onLongPress();
     }
 
     public void onShortPress(){
-        System.out.println("alarm recieved: short press");
-        // currentState.onShortPress();
+        // System.out.println("alarm recieved: short press");
+        currentState.onShortPress();
     }
 
     public void display(){
@@ -44,4 +63,5 @@ public class AlarmClock implements Observer{
             onShortPress();
         }
     }
+
 }
