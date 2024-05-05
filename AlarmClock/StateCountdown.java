@@ -10,7 +10,7 @@ public class StateCountdown implements State{
 
     public StateCountdown(AlarmClock alarmclock){
         this.alarmclock = alarmclock;
-        time = 10;
+        time = 60;
     }
 
     // increase time by one sec using parse
@@ -42,8 +42,7 @@ public class StateCountdown implements State{
 
     @Override
     public void onLongPress() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'onLongPress'");
+        alarmclock.setState(0);
     }
 
     @Override

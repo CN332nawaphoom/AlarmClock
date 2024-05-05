@@ -11,7 +11,7 @@ public class Main {
         Keyboard keyboard = new Keyboard();
         keyboard.attach(alarmclock);
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newFixedThreadPool(1);
         executor.submit(alarmclock::display);
 
         Scanner scanner = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Main {
             }else if (input.equalsIgnoreCase("l")){
                 keyboard.longPress();
             }
-            
+
             try {
                 TimeUnit.SECONDS.sleep(10); // Sleep for 1 second
             } catch (InterruptedException e) {  
